@@ -1,0 +1,6 @@
+---
+#info: Permanently set the boot order to PXE
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: set-boot-pxe-perm
+    ipmi_command: chassis bootdev pxe options=persistent

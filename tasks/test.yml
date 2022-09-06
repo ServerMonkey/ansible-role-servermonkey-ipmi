@@ -1,0 +1,38 @@
+---
+#info: Check if IPMI is working correctly, does not test credentials
+- name: Test IPMI
+  connection: local
+  uri:
+    url: 'https://{{ ipmi_host }}/'
+    validate_certs: no
+    timeout: 5
+  failed_when: false
+  register: shell
+  async: 10
+  poll: 0
+  throttle: 20
+  become: false
+
+- name: Check on an async task
+  connection: local
+  async_status:
+    jid: '{{ shell.ansible_job_id }}'
+  register: job
+  until: job.finished
+  retries: 1000
+  delay: 3
+  ignore_errors: yes
+  become: false
+
+- name: Try to log with servermonkey.ww_logger
+  block:
+    - include_role: name=servermonkey.ww_logger
+      vars:
+        ww_msg: '{{ job.msg }}'
+        ww_logfile: servermonkey.ipmi_test
+      when: "not job.msg.startswith('OK')"
+
+  rescue:
+    - debug:
+        var: job.stdout_lines
+      when: job.stdout_lines is defined

@@ -1,0 +1,8 @@
+---
+#info: Close ikvm terminals on the local machine
+- name: Close ikvm terminal
+  connection: local
+  shell: pkill -9 -f 'iKVM.jar {{ ipmi_host }}'
+  become: false
+  failed_when: false
+  ignore_errors: yes

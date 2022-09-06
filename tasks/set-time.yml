@@ -1,0 +1,12 @@
+---
+#info: Set the IPMI clock time to the same time as the Ansible host
+- name: Get Ansible hosts time
+  connection: local
+  shell: date "+%m/%d/%Y %H:%M:%S"
+  register: set_time_date
+  become: false
+
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: set-time
+    ipmi_command: sel time set "{{ set_time_date.stdout }}"

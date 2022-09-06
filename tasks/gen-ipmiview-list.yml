@@ -1,0 +1,30 @@
+---
+#info: Generate ~.ipmiview/IPMIView.properties file for Supermicros IPMIView
+- name: Remove old list file
+  connection: local
+  raw:
+    rm -f /tmp/ipmi-list.txt ;
+    mkdir -p "$HOME/.ipmiview" || exit 1
+  args:
+    executable: /bin/sh
+  run_once: true
+  become: false
+
+- name: Get IPs
+  connection: local
+  raw:
+    IP=$(getent hosts {{ ipmi_host }} | awk '{ print $1 }' | head -n1) ;
+    echo "{{ ipmi_host }}=$IP:{{ im_description }}" >> /tmp/ipmi-list.txt
+  args:
+    executable: /bin/sh
+  become: false
+
+- name: Sort and save to IPMIView.properties
+  connection: local
+  raw:
+    cat /tmp/ipmi-list.txt | sort -V >"$HOME/.ipmiview/IPMIView.properties" ;
+    rm -f /tmp/ipmi-list.txt
+  args:
+    executable: /bin/sh
+  run_once: true
+  become: false

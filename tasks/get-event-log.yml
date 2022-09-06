@@ -1,0 +1,8 @@
+---
+#info: Get the last 30 Event Logs, ignore 'Chassis intrusion'
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: get-event-log
+    ipmi_command: >
+      sel elist last 30 | sed
+      -e '/Chassis intrusion/d'

@@ -1,0 +1,6 @@
+---
+#info: On next boot set the boot order to DISK
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: set-boot-disk
+    ipmi_command: chassis bootdev disk

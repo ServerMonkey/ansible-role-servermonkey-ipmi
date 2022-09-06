@@ -1,0 +1,6 @@
+---
+#info: Delete the entire IMPI error log
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: set-clear-log
+    ipmi_command: sel clear

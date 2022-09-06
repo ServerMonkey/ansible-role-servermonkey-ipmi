@@ -1,0 +1,6 @@
+---
+#info: Show the IPMI clock time
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: get-time
+    ipmi_command: sel time get

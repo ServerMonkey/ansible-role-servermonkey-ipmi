@@ -1,0 +1,8 @@
+---
+#info: Set the UID LED to on (Supermicro)
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: led-on
+    ipmi_command: raw 0x30 0x0d
+#todo
+# first check if this is a supermicro board with: mc info

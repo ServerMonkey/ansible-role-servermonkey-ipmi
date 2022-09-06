@@ -1,0 +1,28 @@
+---
+#info: Have system request OS to proper shutdown
+- name: Soft shutdown
+  connection: local
+  ipmi_power:
+    name: '{{ ipmi_host }}'
+    user: '{{ ipmi_user }}'
+    password: '{{ ipmi_password }}'
+    state: 'shutdown'
+  register: shell
+  async: 60
+  poll: 0
+  throttle: 20
+  become: false
+
+- name: Check on an async task
+  connection: local
+  async_status:
+    jid: '{{ shell.ansible_job_id }}'
+  register: job
+  until: job.finished
+  retries: 1000
+  delay: 3
+  become: false
+
+- debug:
+    var: job.stdout_lines
+  when: job.stdout_lines is defined

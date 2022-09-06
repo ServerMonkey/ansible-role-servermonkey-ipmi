@@ -1,0 +1,6 @@
+---
+#info: Get the MAC address of BMC/IPMI
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: get-mac-bmc
+    ipmi_command: lan print | grep "MAC Address" | awk '{print $4}'

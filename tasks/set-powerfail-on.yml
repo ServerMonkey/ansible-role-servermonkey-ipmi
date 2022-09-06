@@ -1,0 +1,6 @@
+---
+#info: On power failure always auto boot
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: set-powerfail-on
+    ipmi_command: chassis policy always-on

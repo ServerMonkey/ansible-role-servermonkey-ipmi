@@ -1,0 +1,18 @@
+---
+#info: Get the last 30 Event Logs, show only errors
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: get-errors
+    ipmi_command: >
+      sel elist last 30 | grep
+      -ie bug
+      -e critical
+      -e error
+      -e fail
+      -e fatal
+      -e invalid
+      -e kernel
+      -e panic
+      -e unable
+      -e uncorrectable
+      -e warn || true

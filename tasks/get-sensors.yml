@@ -1,0 +1,6 @@
+---
+#info: List the sensor readings
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: get-sensors
+    ipmi_command: sdr

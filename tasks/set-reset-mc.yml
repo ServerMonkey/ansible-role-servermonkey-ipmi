@@ -1,0 +1,6 @@
+---
+#info: Hard reset the Management Controller/BMC/IPMI
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: set-reset-mc
+    ipmi_command: mc reset cold

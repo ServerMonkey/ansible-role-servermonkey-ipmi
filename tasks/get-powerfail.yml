@@ -1,0 +1,6 @@
+---
+#info: Show power failure strategy
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: get-powerfail
+    ipmi_command: chassis policy list
