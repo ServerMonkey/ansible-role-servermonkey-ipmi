@@ -1,0 +1,6 @@
+---
+#info: Show hosts power consumtion
+- include_role: name=servermonkey.ipmi_runner
+  vars:
+    ipmi_log: get-power-usage
+    ipmi_command: dcmi power reading | sed '/^ *$/d' | sed 's/^[ \t]*//'

@@ -15,4 +15,5 @@
       -e panic
       -e unable
       -e uncorrectable
+      -e throttled
       -e warn || true
