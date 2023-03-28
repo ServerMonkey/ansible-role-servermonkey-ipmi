@@ -3,7 +3,7 @@
 - block:
     - name: Open ikvm terminal
       connection: local
-      shell: ikvm {{ ipmi_host }} {{ ipmi_user }} {{ ipmi_password }}
+      shell: ikvm {{ im_ipmi_host }} {{ im_ipmi_user }} {{ im_ipmi_password }}
       become: false
 
   rescue:

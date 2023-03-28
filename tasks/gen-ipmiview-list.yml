@@ -13,8 +13,8 @@
 - name: Get IPs
   connection: local
   raw:
-    IP=$(getent hosts {{ ipmi_host }} | awk '{ print $1 }' | head -n1) ;
-    echo "{{ ipmi_host }}=$IP:{{ im_description }}" >> /tmp/ipmi-list.txt
+    IP=$(getent hosts {{ im_ipmi_host }} | awk '{ print $1 }' | head -n1) ;
+    echo "{{ im_ipmi_host }}=$IP:{{ im_description }}" >> /tmp/ipmi-list.txt
   args:
     executable: /bin/sh
   become: false

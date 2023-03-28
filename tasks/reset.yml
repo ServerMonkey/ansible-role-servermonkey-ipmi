@@ -3,9 +3,9 @@
 - name: Reset
   connection: local
   ipmi_power:
-    name: '{{ ipmi_host }}'
-    user: '{{ ipmi_user }}'
-    password: '{{ ipmi_password }}'
+    name: '{{ im_ipmi_host }}'
+    user: '{{ im_ipmi_user }}'
+    password: '{{ im_ipmi_password }}'
     state: 'reset'
   register: shell
   async: 60

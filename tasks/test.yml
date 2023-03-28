@@ -3,7 +3,7 @@
 - name: Test IPMI
   connection: local
   uri:
-    url: 'https://{{ ipmi_host }}/'
+    url: 'https://{{ im_ipmi_host }}/'
     validate_certs: no
     timeout: 5
   failed_when: false
