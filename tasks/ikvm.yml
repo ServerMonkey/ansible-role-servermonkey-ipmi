@@ -1,5 +1,6 @@
 ---
 #info: Open a remote VNC-like terminal via Supermicro ikvm, with browser fallback
+#info: . Requires Supermicro 'ikvm' to be in PATH
 - block:
     - name: Open ikvm terminal
       connection: local

@@ -1,5 +1,6 @@
 ---
 #info: Same as ikvm, but opens in a smaller terminal window
+#info: . Requires Supermicro 'ikvm' to be in PATH
 - name: Open ikvm terminal
   connection: local
   shell: ikvm {{ im_ipmi_host }} {{ im_ipmi_user }} {{ im_ipmi_password }} -n

@@ -1,0 +1,4 @@
+Version: 0.12
+Ansible-Section: role-tasks
+Depends: ansible-role-servermonkey-ipmi-runner
+Description: Manage and monitor IPMI capable devices

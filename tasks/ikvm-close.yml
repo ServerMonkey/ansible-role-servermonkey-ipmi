@@ -1,5 +1,6 @@
 ---
 #info: Close ikvm terminals on the local machine
+#info: . Requires Supermicro 'ikvm' to be in PATH
 - name: Close ikvm terminal
   connection: local
   shell: pkill -9 -f 'iKVM.jar {{ im_ipmi_host }}'
